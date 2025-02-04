@@ -53,7 +53,6 @@ pip install python-telegram-bot==13.13 pillow
 
 ```
 pip install tensorflow==2.12.0
-
 ```
 
 
