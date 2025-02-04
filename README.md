@@ -15,8 +15,7 @@ Sistema Operacional, Linguagem e Biblioteca do Telegram
 - Versão do python: 3.10.4
 - Versão do telegram: 13.13
 - Versão do tensorflow: 2.12.0
-
-- 
+ 
 ### Gerando o chatbot no Telegram
 
 - Instale o app do Telegram no seu celular e crie uma conta para você
