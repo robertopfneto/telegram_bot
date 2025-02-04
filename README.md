@@ -108,5 +108,6 @@ python botTelegram.py SEU_TOKEN_AQUI
 
 Exemplo: 
 
-![image](https://github.com/user-attachments/assets/ad01587b-ed2a-42c7-8454-3685bf592aa6)
+![image](https://github.com/user-attachments/assets/88fa1b28-0ad2-4d5a-978d-47834d0f561a)
+
 
