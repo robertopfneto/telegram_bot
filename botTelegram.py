@@ -43,7 +43,13 @@ def echo(update, context):
         update.message.reply_text('Ok, envie a imagem que deseja que eu avalie!')    
     
 
-# Função para processar imagens enviadas
+# Dicionário com descrições das classes
+descricoes_classes = {
+    "Onça": "🐆 A onça-pintada é o maior felino das Américas e um símbolo do Pantanal. Excelente nadadora e caçadora furtiva!",
+    "Anta": "🦣 A anta é o maior mamífero terrestre do Brasil! Ela ajuda a espalhar sementes, sendo essencial para o ecossistema.",
+    "Capivara": "🦫 A capivara é o maior roedor do mundo! Vive em grupos próximos à água e é conhecida por sua natureza pacífica."
+}
+
 def processa_imagem(update, context):
     # Pega o identificador da última imagem enviada
     identificador = update.message.photo[-1].file_id
@@ -74,12 +80,16 @@ def processa_imagem(update, context):
     # Faz a predição
     prediction = model.predict(data)
     index = np.argmax(prediction)
-    class_name = class_names[index].strip()  # Remove espaços extras
+    class_name = class_names[index].strip().split(" ", 1)[-1]  # Corrige para pegar apenas o nome da classe
     confidence_score = prediction[0][index]
 
+    # Pega a descrição correspondente
+    descricao = descricoes_classes.get(class_name, "Não tenho informações sobre este animal.")
+
     # Envia resposta ao usuário
-    resposta = f"Identifiquei: {class_name[2:]}\nConfiança: {confidence_score:.2%}"
-    update.message.reply_text(resposta)
+    resposta = f"📸 *Identifiquei:* {class_name}\n📊 *Confiança:* {confidence_score:.2%}\n\n{descricao}"
+    update.message.reply_text(resposta, parse_mode="Markdown")
+
 
 # Respostas para comandos
 def start(update, context):
